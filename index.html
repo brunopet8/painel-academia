@@ -8,7 +8,6 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Painel da academia">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta http-equiv="refresh" content="0;url=https://script.google.com/macros/s/AKfycbxKqWtl9sfvTjr-HKI5SuOf5ubfwNHibM49xKOCS-pqtbxTGayBUmO5yAJNOG13fNkI/exec">
   <style>
     body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; background: #fff; font-family: system-ui, sans-serif; color: #111; padding: 16px; box-sizing: border-box; text-align: center; }
     img { width: 160px; height: 160px; }
@@ -17,10 +16,14 @@
 </head>
 <body>
   <img src="apple-touch-icon.png" alt="Fabricio Jiu-Jitsu">
-  <p>Abrindo o painel da academia...</p>
-  <a href="https://script.google.com/macros/s/AKfycbxKqWtl9sfvTjr-HKI5SuOf5ubfwNHibM49xKOCS-pqtbxTGayBUmO5yAJNOG13fNkI/exec">Se não abrir sozinho, toque aqui</a>
+  <p id="aviso">Para instalar: toque em Compartilhar e depois em "Adicionar à Tela de Início".</p>
+  <a href="https://script.google.com/macros/s/AKfycbxKqWtl9sfvTjr-HKI5SuOf5ubfwNHibM49xKOCS-pqtbxTGayBUmO5yAJNOG13fNkI/exec">Abrir o painel</a>
   <script>
-    window.location.replace("https://script.google.com/macros/s/AKfycbxKqWtl9sfvTjr-HKI5SuOf5ubfwNHibM49xKOCS-pqtbxTGayBUmO5yAJNOG13fNkI/exec");
+    // Redireciona só quando aberto pelo ícone da tela inicial; no Safari a página fica parada para o iPhone pegar o ícone.
+    if (window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches) {
+      document.getElementById('aviso').textContent = 'Abrindo o painel da academia...';
+      window.location.replace("https://script.google.com/macros/s/AKfycbxKqWtl9sfvTjr-HKI5SuOf5ubfwNHibM49xKOCS-pqtbxTGayBUmO5yAJNOG13fNkI/exec");
+    }
   </script>
 </body>
 </html>
